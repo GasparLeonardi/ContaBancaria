@@ -10,7 +10,7 @@ namespace contabancaria
 
             int opcao;
 
-            Conta c1 = new Conta(1, 123, 1, "Gaspar", 1000000.00M);
+            /*Conta c1 = new Conta(1, 123, 1, "Gaspar", 1000000.00M);
 
             c1.Visualizar();
             c1.SetNumero(345);
@@ -19,7 +19,21 @@ namespace contabancaria
             c1.Sacar(1000);
             c1.Visualizar();
             c1.Depositar(5000);
-            c1.Visualizar();
+            c1.Visualizar();*/
+
+            /*ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "Samantha", 100000000.00M,1000);
+            cc1.Visualizar();
+
+            cc1.Sacar(100001000.00M);
+
+            cc1.Visualizar();
+
+            cc1.Depositar(5000);
+            cc1.Visualizar();*/
+
+            ContaPoupanca cp1 = new ContaPoupanca(1, 123, 2, "Nico Robin", 100000000.00M, 25);
+            cp1.Visualizar();
+
 
 
             while (true) {

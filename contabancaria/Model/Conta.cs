@@ -25,6 +25,8 @@ namespace contabancaria.Model
             this.saldo = saldo;
         }
 
+        //Polimorfismo de sobrecarga
+        public Conta() { }
 
         //Metodos Get e Set
         public int GetNumero()
@@ -67,7 +69,7 @@ namespace contabancaria.Model
         {
             this.saldo = saldo;
         }
-        public bool Sacar(decimal valor)
+        public virtual bool Sacar(decimal valor)
         {
             if (this.saldo < valor)
             {
@@ -81,7 +83,7 @@ namespace contabancaria.Model
         {
             this.SetSaldo(this.saldo + valor);
         }
-        public void Visualizar()
+        public virtual void Visualizar()
         {
             string tipo = string.Empty;
             
@@ -102,7 +104,6 @@ namespace contabancaria.Model
             Console.WriteLine($"Tipo da conta: {tipo}");
             Console.WriteLine($"Titular da conta: {this.titular}");
             Console.WriteLine($"Saldo da conta: {(this.saldo).ToString("C")}");
-            Console.WriteLine("************************************************");
         }
     }
     }
