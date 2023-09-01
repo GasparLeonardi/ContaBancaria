@@ -25,6 +25,7 @@ namespace contabancaria.Model
             this.saldo = saldo;
         }
 
+
         //Metodos Get e Set
         public int GetNumero()
         {
