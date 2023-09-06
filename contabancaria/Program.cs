@@ -9,9 +9,9 @@ namespace contabancaria
         static void Main(string[] args)
         {
 
-            int opcao,agencia, tipo, aniversario, numero;
+            int opcao,agencia, tipo, aniversario, numero, numeroDestino;
             string? titular;
-            decimal saldo, limite;
+            decimal saldo, limite, valor;
 
 
             ContaController contas = new();
@@ -192,14 +192,44 @@ namespace contabancaria
                         break;
                     case 6:
                         Console.WriteLine("Saque\n\n");
+
+                        Console.WriteLine("Digite o número da conta: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o valor do saque: ");
+                        valor = Convert.ToDecimal(Console.ReadLine());
+
+                        contas.Sacar(numero, valor);
+
                         KeyPress();
                         break;
                     case 7:
                         Console.WriteLine("Depósito\n\n");
+
+                        Console.WriteLine("Digite o número da conta: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o valor do Depósito: ");
+                        valor = Convert.ToDecimal(Console.ReadLine());
+
+                        contas.Depositar(numero, valor);
+
                         KeyPress();
                         break;
                     case 8:
                         Console.WriteLine("Transferência entre Contas\n\n");
+
+                        Console.WriteLine("Digite o número da conta: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o número da conta Destino: ");
+                        numeroDestino = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o valor da Transferência: ");
+                        valor = Convert.ToDecimal(Console.ReadLine());
+
+                        contas.Transferir(numero, numeroDestino, valor);
+
                         KeyPress();
                         break;
                     default:

@@ -85,15 +85,82 @@ namespace contabancaria.Controller
         //Métodos Bancários
         public void Sacar(int numero, decimal valor)
         {
-            throw new NotImplementedException();
+
+            var conta = BuscarNaCollection(numero);
+            if (conta is not null)
+            {
+
+                if(conta.Sacar(valor) == true)
+                {
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine($"O saque de {valor} na conta {numero} foi efetuado com sucesso!");
+                    Console.ResetColor();
+                }
+
+            }
+            else
+            {
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"A conta {numero} não foi encontrada!");
+                Console.ResetColor();
+            }
+
         }
         public void Depositar(int numero, decimal valor)
         {
-            throw new NotImplementedException();
+
+            var conta = BuscarNaCollection(numero);
+            if (conta is not null)
+            {
+
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                conta.Depositar(valor);
+                Console.WriteLine($"O deposito de {valor} na conta {numero} foi efetuado com sucesso!");
+                Console.ResetColor();
+
+            }
+            else
+            {
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"A conta {numero} não foi encontrada!");
+                Console.ResetColor();
+            }
+
         }
         public void Transferir(int numeroOrigem, int numeroDestino, decimal valor)
         {
-            throw new NotImplementedException();
+            var contaOrigem = BuscarNaCollection(numeroOrigem);
+            var contaDestino = BuscarNaCollection(numeroDestino);
+
+            if (contaOrigem is not null && contaDestino is not null)
+            {
+
+                if(contaOrigem.Sacar(valor) == true)
+                {
+                    contaDestino.Depositar(valor);
+                    Console.WriteLine("A transfêrencia foi efetuada com sucesso!");
+                }
+
+            }
+            else
+            {
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"A conta de Origem ou Destino não foi encontrada!");
+                Console.ResetColor();
+            }
+
+
+
+
+
+
+
+
         }
 
         //Metodos Auxiliares
